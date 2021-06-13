@@ -1,4 +1,4 @@
-# Sensor Fusion Self-Driving Car Course
+# Sensor Fusion Nano Degree
 
 ![ObstacleDetectionFPS](https://user-images.githubusercontent.com/68550704/121780072-fcb62980-cb9e-11eb-8f27-f16e22c2baa5.gif)
 
