@@ -13,6 +13,43 @@ In this course we will be talking about sensor fusion, whch is the process of ta
 
 **Sensor Fusion** by combing lidar's high resoultion imaging with radar's ability to measure velocity of objects we can get a better understanding of the sorrounding environment than we could using one of the sensors alone.
 
+# RANSAC Algorithm for Segmentation
+
+PCL library has preefined function called "segmentplane" for point cloud segmentation but in this project we developed this algorithm on our own intially for 2d and then later we extended it to 3d for the final project.
+
+RANSAC stands for Random Sample Consensus, and is a method for detecting outliers in data. RANSAC runs for a max number of iterations, and returns the model with the best fit. Each iteration randomly picks a subsample of the data and fits a model through it, such as a line or a plane. Then the iteration with the highest number of inliers or the lowest noise is used as the best model.
+
+![ransac](https://user-images.githubusercontent.com/68550704/121816623-fac29800-cc7c-11eb-8852-3d2fb3d05594.gif)
+
+One type of RANSAC version selects the smallest possible subset of points to fit. For a line, that would be two points, and for a plane three points. Then the number of inliers are counted, by iterating through every remaining point and calculating its distance to the model. The points that are within a certain distance to the model are counted as inliers. The iteration that has the highest number of inliers is then the best model. This will be the version that you will implement in this quiz.
+
+Other methods of RANSAC could sample some percentage of the model points, for example 20% of the total points, and then fit a line to that. Then the error of that line is calculated, and the iteration with the lowest error is the best model. This method might have some advantages since not every point at each iteration needs to be considered. It’s good to experiment with different approaches and time results to see what works best.
+
+# KD Tree Algorithm for clustering Point cloud
+
+Now we have segmented the points and we can recognize which ones represent obstacles for your car. It would be great to break up and group those obstacle points, especially if you want to do multiple object tracking with cars, pedestrians, and bicyclists, for instance. One way to do that grouping and cluster point cloud data is called euclidean clustering.
+
+So even for this we developed the algorithm in 2D intially and later extending it to 3d for implementing in final project.so lets divide this task in to 2 steps
+
+* Inserting points in to KD tree(2D)
+* Searching points in KD Tree(2D)
+
+# Inserting points in to KD tree(2D)
+
+A KD-Tree is a binary tree that splits points between alternating axes. By separating space by splitting regions, nearest neighbor search can be made much faster when using an algorithm like euclidean clustering.
+
+## Workflow
+
+* The points which is inserted first will become the root of the tree
+* Later inserted points will be allotted to the left if its 'x' value is lesser than root 'x' value or to the right if greater
+* when d%2 is equal to 0 x split will occur and at 1 y split will occur.Here d means the number of dimensions we are working in this case 2.
+* consecutive points will be compared starting from root and based on depth x or y will be compared and alloted to the repective position in kd tree
+
+![kdtree5](https://user-images.githubusercontent.com/68550704/121817135-c3a1b600-cc7f-11eb-8931-e13203da08bf.png)
+![2dpoints](https://user-images.githubusercontent.com/68550704/121817188-1a0ef480-cc80-11eb-8e34-f6ecf1442627.png)
+![Kdtree_insert](https://user-images.githubusercontent.com/68550704/121817175-02377080-cc80-11eb-8695-1aa8477f1362.png)
+
+
 
 ## Installation
 
