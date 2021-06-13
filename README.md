@@ -46,9 +46,27 @@ A KD-Tree is a binary tree that splits points between alternating axes. By separ
 * consecutive points will be compared starting from root and based on depth x or y will be compared and alloted to the repective position in kd tree
 
 ![kdtree5](https://user-images.githubusercontent.com/68550704/121817135-c3a1b600-cc7f-11eb-8931-e13203da08bf.png)
+
+                                      Initial 2d points
+
 ![2dpoints](https://user-images.githubusercontent.com/68550704/121817188-1a0ef480-cc80-11eb-8e34-f6ecf1442627.png)
+
+              KD tree formed
+
 ![Kdtree_insert](https://user-images.githubusercontent.com/68550704/121817175-02377080-cc80-11eb-8695-1aa8477f1362.png)
 
+# Searching points in KD Tree(2D)
+
+Once points are able to be inserted into the tree, the next step is being able to search for nearby points inside the tree compared to a given target point. Points within a distance of distanceTol are considered to be nearby. The KD-Tree is able to split regions and allows certain regions to be completely ruled out, speeding up the process of finding nearby neighbors.
+
+The naive approach of finding nearby neighbors is to go through every single point in the tree and compare their distances with the target, selecting point indices that fall within the distance tolerance of the target. Instead with the KD-Tree you can compare distance within a boxed square that is 2 x distanceTol for length, centered around the target point. If the current node point is within this box then you can directly calculate the distance and see if the point id should be added to the list of nearby ids. Then you see if your box crosses over the node division region and if it does compare that next node. You do this recursively, with the advantage being that if the box region is not inside some division region you completely skip that branch.
+
+![Kdtree_search](https://user-images.githubusercontent.com/68550704/121817614-c18d2680-cc82-11eb-90e0-629dac7bb701.gif)
+
+
+Results will look like this.Here the three colours indicates three clusters.
+
+<img width="286" alt="Kdtree_cluster" src="https://user-images.githubusercontent.com/68550704/121817646-ed101100-cc82-11eb-99f7-6f0c5719495e.png">
 
 
 ## Installation
