@@ -68,6 +68,16 @@ Results will look like this.Here the three colours indicates three clusters.
 
 <img width="286" alt="Kdtree_cluster" src="https://user-images.githubusercontent.com/68550704/121817646-ed101100-cc82-11eb-99f7-6f0c5719495e.png">
 
+# Final Project
+
+In the final project we were given the real world pcd data so the tasks/steps carried out are
+
+* Loading pcd data
+* Filtering the point cloud
+* Cropping the pcd
+* RANSAC for segmentation
+* KD tree for clustering obstacles
+* Adding Bounding boxes for the obstacles
 
 ## Installation
 
